@@ -1,0 +1,23 @@
+.tox:not(.tox-tinymce-inline) .tox-editor-header,
+.tox .tox-toolbar-overlord,
+.tox-toolbar__primary,
+.tox .tox-statusbar {
+  background-color: #202020 !important;
+}
+
+.tox-tbtn:not(.tox-tbtn--enabled) {
+  svg {
+    fill: #7A7A7A !important;
+  }
+}
+
+.tox-tbtn:not(.tox-tbtn--disabled):hover{
+  background: none !important;
+  svg {
+    fill: white !important;
+  }
+}
+
+.tox .tox-tbtn--enabled {
+  background: none !important;
+}

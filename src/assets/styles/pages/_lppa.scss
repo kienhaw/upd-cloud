@@ -1,0 +1,39 @@
+.mpwa-tabs {
+  margin-top: 30px;
+  background-color: #171717;
+  border-radius: 12px 12px 0px 0px;
+  .mpwa-tabs-hero {
+    .pane-tab {
+      overflow-y: scroll;
+      height: 450px;
+
+      .pdf-img {
+        width: 100%;
+        border-radius: 8px;
+      }
+    }
+    .pane-tab::-webkit-scrollbar {
+      display: none;
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none;
+    }
+    .ant-tabs-tab {
+      color: #7c7c7c;
+    }
+    .ant-tabs-nav {
+      margin-bottom: 0px;
+    }
+    .ant-tabs-nav-list {
+      padding: 5px 30px;
+    }
+    .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+      background-color: #2c2c2c;
+      color: #ffffff;
+      padding: 6px 15px;
+      border-radius: 8px;
+    }
+    .ant-tabs-ink-bar {
+      background-color: transparent;
+    }
+  }
+}

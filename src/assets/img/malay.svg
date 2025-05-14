@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-path">
+      <circle id="Ellipse_1" data-name="Ellipse 1" cx="16" cy="16" r="16" transform="translate(0.092 -0.367)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_26414" data-name="Group 26414" transform="translate(-0.092 0.367)">
+    <g id="Group_26413" data-name="Group 26413" transform="translate(0 0)" clip-path="url(#clip-path)">
+      <g id="Group_26412" data-name="Group 26412" transform="translate(-7.582 -0.303)">
+        <g id="Group_26411" data-name="Group 26411" transform="translate(0 0)">
+          <rect id="Rectangle_4396" data-name="Rectangle 4396" width="31.446" height="36.422" transform="translate(42.361 1.187) rotate(90)" fill="#fff"/>
+          <path id="Path_28896" data-name="Path 28896" d="M686.41,3507.674v1.984H655.226v-1.984h-.131v2.246h31.446v-2.246Z" transform="translate(-649.156 -3477.287)" opacity="0.1"/>
+          <g id="Group_26409" data-name="Group 26409" transform="translate(0 0)">
+            <rect id="Rectangle_4397" data-name="Rectangle 4397" width="2.445" height="47.489" transform="translate(47.489 29.336) rotate(90)" fill="#c00"/>
+            <rect id="Rectangle_4398" data-name="Rectangle 4398" width="2.445" height="47.489" transform="translate(47.489 24.447) rotate(90)" fill="#c00"/>
+            <rect id="Rectangle_4399" data-name="Rectangle 4399" width="2.445" height="47.489" transform="translate(47.489 19.558) rotate(90)" fill="#c00"/>
+            <rect id="Rectangle_4400" data-name="Rectangle 4400" width="2.445" height="47.489" transform="translate(47.489 14.668) rotate(90)" fill="#c00"/>
+            <rect id="Rectangle_4401" data-name="Rectangle 4401" width="2.445" height="47.489" transform="translate(47.489 9.779) rotate(90)" fill="#c00"/>
+            <rect id="Rectangle_4402" data-name="Rectangle 4402" width="2.445" height="47.489" transform="translate(47.489 4.889) rotate(90)" fill="#c00"/>
+            <rect id="Rectangle_4403" data-name="Rectangle 4403" width="2.445" height="47.489" transform="translate(47.489 0) rotate(90)" fill="#c00"/>
+          </g>
+          <rect id="Rectangle_4404" data-name="Rectangle 4404" width="23.744" height="19.558" transform="translate(0 0)" fill="#0c106c"/>
+          <g id="Group_26410" data-name="Group 26410" transform="translate(10.037 7.198)">
+            <path id="Path_28897" data-name="Path 28897" d="M1619.288,1134.661l2.009-.778-2.148.171,1.473-1.573-1.861,1.086.645-2.056-1.205,1.786-.311-2.132-.311,2.132-1.205-1.786.645,2.056-1.861-1.086,1.473,1.573-2.148-.171,2.009.778-2.009.778,2.148-.171-1.473,1.573,1.861-1.086-.645,2.056,1.205-1.786.311,2.132.311-2.132,1.205,1.786-.645-2.056,1.861,1.086-1.473-1.573,2.148.171Z" transform="translate(-1609.501 -1130.466)" fill="#fcc600"/>
+            <path id="Path_28898" data-name="Path 28898" d="M1089.575,1061.5a3.73,3.73,0,0,1,5.24-3.409,4.194,4.194,0,1,0,0,6.817,3.73,3.73,0,0,1-5.24-3.408Z" transform="translate(-1088.177 -1057.302)" fill="#fcc600"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
