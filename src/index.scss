@@ -1,1 +1,15 @@
-@import 'bootstrap/dist/css/bootstrap.min.css';
+$primary: #2abed1;
+
+@import "bootstrap/scss/bootstrap";
+
+.bg-body-udp {
+  background-color: #2abed1;
+}
+
+.navlink-width {
+  width: 200px;
+  text-align: center;
+  align-self: center;
+  color: white;
+  line-height: normal;
+}
