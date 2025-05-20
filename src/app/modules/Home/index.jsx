@@ -1,14 +1,28 @@
 import React from "react";
-import { Container, Row, Col, Navbar, Nav, Stack, Card, Form, Button } from "react-bootstrap";
-import { useForm } from 'react-hook-form';
-import LogoImg from '../../../assets/img/logo.png';
+import {
+  Container,
+  Row,
+  Col,
+  Navbar,
+  Nav,
+  Stack,
+  Card,
+  Form,
+  Button,
+} from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import LogoImg from "../../../assets/img/logo.png";
 
 export default (props) => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = (val) => {
     console.log(val);
-  }
+  };
 
   return (
     // add layout template here for header and footer
@@ -20,30 +34,35 @@ export default (props) => {
       {/* header */}
       <Navbar className="bg-body-udp">
         <Container>
-            <Navbar.Brand href="#home">
-              <img
-                src={LogoImg}
-                width="100%"
-                className="d-inline-block align-top"
-                alt="React Bootstrap logo"
-              />
-            </Navbar.Brand>
-            <Nav className="ms-auto">
-              <Nav.Link className="navlink-width" href="#home">Cloud Products & Services</Nav.Link>
-              <Nav.Link className="navlink-width" href="#features">About Us</Nav.Link>
-              <Nav.Link className="navlink-width" href="#pricing">Contact Us</Nav.Link>
-            </Nav>
+          <Navbar.Brand href="#home">
+            <img
+              src={LogoImg}
+              width="100%"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />
+          </Navbar.Brand>
+          <Nav className="ms-auto">
+            <Nav.Link className="navlink-width" href="#home">
+              Cloud Products & Services
+            </Nav.Link>
+            <Nav.Link className="navlink-width" href="#features">
+              About Us
+            </Nav.Link>
+            <Nav.Link className="navlink-width" href="#pricing">
+              Contact Us
+            </Nav.Link>
+          </Nav>
         </Container>
       </Navbar>
 
       {/* body */}
-      <Container className="my-3" style={{'minHeight': '55vh'}}>
+      <Container fluid={"md"} className="my-3" style={{ minHeight: "55vh" }}>
         <section id="inquiry" className="mt-5">
           <Row>
             <Col>
               <h2 className="text-primary">
-                Welcome to reach out through
-                the following channels
+                Welcome to reach out through the following channels
               </h2>
               <Stack direction="horizontal" gap={5} className="mb-2">
                 <i>Icon</i>
@@ -52,12 +71,10 @@ export default (props) => {
                     <b>Product Information</b>
                   </p>
                   <p>
-                    Click now to explore the products and
-                    services offered by UDP Cloud
+                    Click now to explore the products and services offered by
+                    UDP Cloud
                   </p>
-                  <p>
-                    Learn More
-                  </p>
+                  <p>Learn More</p>
                 </div>
               </Stack>
               <Stack direction="horizontal" gap={5} className="mb-2">
@@ -67,12 +84,10 @@ export default (props) => {
                     <b>Career Opportunities</b>
                   </p>
                   <p>
-                    Join the UDP CLOUD family! Click to
-                    discover available positions.
+                    Join the UDP CLOUD family! Click to discover available
+                    positions.
                   </p>
-                  <p>
-                    Join Us
-                  </p>
+                  <p>Join Us</p>
                 </div>
               </Stack>
               <Stack direction="horizontal" gap={5} className="mb-2">
@@ -81,32 +96,28 @@ export default (props) => {
                   <p>
                     <b>Business Inquiries</b>
                   </p>
-                  <p>
-                    Contact our sales team to learn more
-                    about UDP CLOUD.
-                  </p>
-                  <p>
-                    sales@udpcloud.com.my
-                  </p>
+                  <p>Contact our sales team to learn more about UDP CLOUD.</p>
+                  <p>sales@udpcloud.com.my</p>
                 </div>
               </Stack>
             </Col>
             <Col>
-            <Card
-              bg={'light'}
-              key={'Light'}
-              text={'dark'}
-              className="mb-2"
-            >
-              <Card.Body>
-                <Card.Title>Got questions? We'd love to hear from you! </Card.Title>
-                <Card.Text>
+              <Card bg={"light"} key={"Light"} text={"dark"} className="mb-2">
+                <Card.Body>
+                  <Card.Title>
+                    Got questions? We'd love to hear from you!{" "}
+                  </Card.Title>
                   <Form onSubmit={handleSubmit(onSubmit)}>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
                       <Form.Control
                         type="text"
                         placeholder="First name"
-                        {...register('firstName', { required: 'First name is required' })}
+                        {...register("firstName", {
+                          required: "First name is required",
+                        })}
                         isInvalid={!!errors.firstName}
                       />
                       <Form.Control.Feedback type="invalid">
@@ -114,11 +125,16 @@ export default (props) => {
                       </Form.Control.Feedback>
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput2"
+                    >
                       <Form.Control
                         type="email"
                         placeholder="Email"
-                        {...register('email', { required: 'Email is required' })}
+                        {...register("email", {
+                          required: "Email is required",
+                        })}
                         isInvalid={!!errors.email}
                       />
                       <Form.Control.Feedback type="invalid">
@@ -126,11 +142,14 @@ export default (props) => {
                       </Form.Control.Feedback>
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput3"
+                    >
                       <Form.Control
                         type="text"
                         placeholder="Phone Number / Telegram"
-                        {...register('phone', { required: 'This is required' })}
+                        {...register("phone", { required: "This is required" })}
                         isInvalid={!!errors.phone}
                       />
                       <Form.Control.Feedback type="invalid">
@@ -138,11 +157,16 @@ export default (props) => {
                       </Form.Control.Feedback>
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput4"
+                    >
                       <Form.Control
                         type="text"
                         placeholder="Inquiry Type"
-                        {...register('inquiry', { required: 'This is required' })}
+                        {...register("inquiry", {
+                          required: "This is required",
+                        })}
                         isInvalid={!!errors.inquiry}
                       />
                       <Form.Control.Feedback type="invalid">
@@ -150,18 +174,24 @@ export default (props) => {
                       </Form.Control.Feedback>
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                      <Form.Control as="textarea" rows={3} placeholder="Please describe your question in detail.
-  We will respond to you as soon as possible." />
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlTextarea1"
+                    >
+                      <Form.Control
+                        as="textarea"
+                        rows={3}
+                        placeholder="Please describe your question in detail.
+  We will respond to you as soon as possible."
+                      />
                     </Form.Group>
 
                     <Button variant="primary" type="submit">
                       Submit
                     </Button>
                   </Form>
-                </Card.Text>
-              </Card.Body>
-            </Card>
+                </Card.Body>
+              </Card>
             </Col>
           </Row>
         </section>
@@ -171,58 +201,51 @@ export default (props) => {
       <Container>
         <Row>
           <Col xs={6}>
-            <img src={LogoImg} width={'50%'}/>
+            <img src={LogoImg} width={"50%"} />
             <div>
-              <b>
-                Visit us online at www.udpcloud.com.my
-              </b>
+              <b>Visit us online at www.udpcloud.com.my</b>
             </div>
           </Col>
           <Col xs={3}>
-            <h3 className="text-primary">
-              Quick Links
-            </h3>
-            <p>
-              Cloud Products & Services
-            </p>
-            <p>
-              About Us
-            </p>
-            <p>
-              Contact Us
-            </p>
+            <h3 className="text-primary">Quick Links</h3>
+            <p>Cloud Products & Services</p>
+            <p>About Us</p>
+            <p>Contact Us</p>
           </Col>
           <Col xs={3}>
-            <h3 className="text-primary">
-              Get in Touch
-            </h3>
+            <h3 className="text-primary">Get in Touch</h3>
             <Stack direction="horizontal" gap={2}>
               <i>icon</i>
-              <span>
-                Tel: +603 5590 9999
-              </span>
+              <span>Tel: +603 5590 9999</span>
             </Stack>
             <Stack direction="horizontal" gap={2}>
               <i className="align-self-start">locs</i>
               <div>
-                <p className="mb-0"><b>Level 10,Boutique Office 3</b></p>
                 <p className="mb-0">
-                  B03-D (PILLAR 7) KL Eco City
+                  <b>Level 10,Boutique Office 3</b>
                 </p>
-                <p className="mb-0">
-                  59200 Kuala Lumpur
-                </p>
+                <p className="mb-0">B03-D (PILLAR 7) KL Eco City</p>
+                <p className="mb-0">59200 Kuala Lumpur</p>
               </div>
             </Stack>
             <Stack direction="horizontal" gap={2}>
               <i className="align-self-start">emai</i>
-              <a href="mailto:sales@udpcloud.com.my" className="text-dark" style={{"textDecoration": "none", "fontWeight": "bold"}}>sales@udpcloud.com.my</a>
+              <a
+                href="mailto:sales@udpcloud.com.my"
+                className="text-dark"
+                style={{ textDecoration: "none", fontWeight: "bold" }}
+              >
+                sales@udpcloud.com.my
+              </a>
             </Stack>
           </Col>
         </Row>
         <Row className="my-3">
           <Col>
-            <hr className="bg-primary border-primary" style={{'height': '3px'}} />
+            <hr
+              className="bg-primary border-primary"
+              style={{ height: "3px" }}
+            />
           </Col>
         </Row>
       </Container>
