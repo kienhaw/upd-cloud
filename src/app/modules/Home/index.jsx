@@ -38,50 +38,133 @@ export default (props) => {
 
       {/* body */}
       <Container className="my-3" style={{'minHeight': '55vh'}}>
-        <Row>
-          <Col>
-            <h2 className="text-primary">
-              Welcome to reach out through
-              the following channels
-            </h2>
-          </Col>
-          <Col>
-          <Card
-            bg={'light'}
-            key={'Light'}
-            text={'dark'}
-            className="mb-2"
-          >
-            <Card.Body>
-              <Card.Title>Got questions? We'd love to hear from you! </Card.Title>
-              <Card.Text>
-                <Form onSubmit={handleSubmit(onSubmit)}>
-                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control
-                      type="email"
-                      placeholder="Enter email"
-                      {...register('email', { required: 'Email is required' })}
-                      isInvalid={!!errors.email}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.email?.message}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Example textarea</Form.Label>
-                    <Form.Control as="textarea" rows={3} />
-                  </Form.Group>
+        <section id="inquiry" className="mt-5">
+          <Row>
+            <Col>
+              <h2 className="text-primary">
+                Welcome to reach out through
+                the following channels
+              </h2>
+              <Stack direction="horizontal" gap={5} className="mb-2">
+                <i>Icon</i>
+                <div>
+                  <p>
+                    <b>Product Information</b>
+                  </p>
+                  <p>
+                    Click now to explore the products and
+                    services offered by UDP Cloud
+                  </p>
+                  <p>
+                    Learn More
+                  </p>
+                </div>
+              </Stack>
+              <Stack direction="horizontal" gap={5} className="mb-2">
+                <i>Icon</i>
+                <div>
+                  <p>
+                    <b>Career Opportunities</b>
+                  </p>
+                  <p>
+                    Join the UDP CLOUD family! Click to
+                    discover available positions.
+                  </p>
+                  <p>
+                    Join Us
+                  </p>
+                </div>
+              </Stack>
+              <Stack direction="horizontal" gap={5} className="mb-2">
+                <i>Icon</i>
+                <div>
+                  <p>
+                    <b>Business Inquiries</b>
+                  </p>
+                  <p>
+                    Contact our sales team to learn more
+                    about UDP CLOUD.
+                  </p>
+                  <p>
+                    sales@udpcloud.com.my
+                  </p>
+                </div>
+              </Stack>
+            </Col>
+            <Col>
+            <Card
+              bg={'light'}
+              key={'Light'}
+              text={'dark'}
+              className="mb-2"
+            >
+              <Card.Body>
+                <Card.Title>Got questions? We'd love to hear from you! </Card.Title>
+                <Card.Text>
+                  <Form onSubmit={handleSubmit(onSubmit)}>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                      <Form.Control
+                        type="text"
+                        placeholder="First name"
+                        {...register('firstName', { required: 'First name is required' })}
+                        isInvalid={!!errors.firstName}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.firstName?.message}
+                      </Form.Control.Feedback>
+                    </Form.Group>
 
-                  <Button variant="primary" type="submit">
-                    Submit
-                  </Button>
-                </Form>
-              </Card.Text>
-            </Card.Body>
-          </Card>
-          </Col>
-        </Row>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+                      <Form.Control
+                        type="email"
+                        placeholder="Email"
+                        {...register('email', { required: 'Email is required' })}
+                        isInvalid={!!errors.email}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.email?.message}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
+                      <Form.Control
+                        type="text"
+                        placeholder="Phone Number / Telegram"
+                        {...register('phone', { required: 'This is required' })}
+                        isInvalid={!!errors.phone}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.phone?.message}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
+                      <Form.Control
+                        type="text"
+                        placeholder="Inquiry Type"
+                        {...register('inquiry', { required: 'This is required' })}
+                        isInvalid={!!errors.inquiry}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.inquiry?.message}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                      <Form.Control as="textarea" rows={3} placeholder="Please describe your question in detail.
+  We will respond to you as soon as possible." />
+                    </Form.Group>
+
+                    <Button variant="primary" type="submit">
+                      Submit
+                    </Button>
+                  </Form>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            </Col>
+          </Row>
+        </section>
       </Container>
 
       {/* footer */}
