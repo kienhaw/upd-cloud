@@ -42,7 +42,7 @@ export default (props) => {
     // but instead of antd, we should replace component from antd to bootstrap
     <>
       {/* header */}
-      <Navbar className="bg-body-udp">
+      <Navbar className="bg-body-udp" sticky="top">
         <Container>
           <Navbar.Brand href="#home">
             <img
@@ -70,7 +70,7 @@ export default (props) => {
       {/* Main section */}
       <section id="main" style={{ borderBottom: "1px solid #f3f3f3" }}>
         <Container
-          style={{ display: "flex", alignItems: "center", height: "55vh" }}
+          style={{ display: "flex", alignItems: "center", height: "60vh" }}
         >
           <Row className="w-100 gx-5">
             <Col xs={12} sm={7} className="mt-5">
@@ -111,7 +111,9 @@ export default (props) => {
 
       {/* About section */}
       <section id="aboutus">
-        <Container className="my-5">
+        <Container
+          style={{ display: "flex", alignItems: "center", height: "65vh" }}
+        >
           <Row>
             <Col sm={12}>
               <h2 className="text-primary fw-bold mb-4 fs-1">
@@ -158,7 +160,7 @@ export default (props) => {
       {/* height should be depends on screensize */}
       <section id="contactus">
         <Container
-          style={{ display: "flex", alignItems: "center", height: "55vh" }}
+          style={{ display: "flex", alignItems: "center", height: "65vh" }}
         >
           <Row className="w-100 gx-5">
             <Col xs={12} sm={7} className="mt-5">
@@ -180,8 +182,8 @@ export default (props) => {
       </section>
 
       {/* Inquiry section */}
-      <section id="inquiry" className="py-4">
-        <Container fluid={"md"} className="my-3" style={{ minHeight: "55vh" }}>
+      <section id="inquiry" className="py-5">
+        <Container fluid={"md"} className="my-3" style={{ minHeight: "60vh" }}>
           <Row className="gx-5">
             <Col xs={12} sm={5} className="mt-4">
               <h3 className="text-primary mb-4 fw-bold">
