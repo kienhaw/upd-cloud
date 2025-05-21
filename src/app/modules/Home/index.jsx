@@ -13,13 +13,13 @@ import {
 import { useForm } from "react-hook-form";
 import LogoImg from "../../../assets/img/logo.png";
 import FooterLogoImg from "../../../assets/img/footer-logo.png";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faLocationDot, faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import BusinessInqImg from '../../../assets/img/business-inquiries.png';
-import CareerOppImg from '../../../assets/img/career-opportunities.png';
-import ProductInfoImg from '../../../assets/img/product-info.png';
-import ContactUsImg from '../../../assets/img/contactus.png';
+import BusinessInqImg from "../../../assets/img/business-inquiries.png";
+import CareerOppImg from "../../../assets/img/career-opportunities.png";
+import ProductInfoImg from "../../../assets/img/product-info.png";
+import ContactUsImg from "../../../assets/img/contactus.png";
 
 export default (props) => {
   const {
@@ -69,18 +69,20 @@ export default (props) => {
       {/* Contact section */}
       {/* height should be depends on screensize */}
       <section id="contactus">
-        <Container style={{display: 'flex', alignItems: 'center', height: '55vh'}}>
+        <Container
+          style={{ display: "flex", alignItems: "center", height: "55vh" }}
+        >
           <Row className="w-100 gx-5">
             <Col xs={12} sm={7} className="mt-5">
-            <div style={{width: '85%'}}>
-            <h2 className="text-primary fw-bold mb-4 fs-1">Contact Us</h2>
-            <p className="">
-            Fill out the form below to consult with us and begin your exclusive cloud
-journey! If you have any questions, feel free to check our FAQ or contact
-us directly—our specialists will be happy to assist you.
-            </p>
-            </div>
-            
+              <div style={{ width: "85%" }}>
+                <h2 className="text-primary fw-bold mb-4 fs-1">Contact Us</h2>
+                <p className="">
+                  Fill out the form below to consult with us and begin your
+                  exclusive cloud journey! If you have any questions, feel free
+                  to check our FAQ or contact us directly—our specialists will
+                  be happy to assist you.
+                </p>
+              </div>
             </Col>
             <Col xs={12} sm={4}>
               <img src={ContactUsImg} alt="" className="w-100" />
@@ -98,8 +100,12 @@ us directly—our specialists will be happy to assist you.
                 Welcome to reach out through the following channels
               </h3>
               <Stack direction="vertical" gap={3}>
-                <Stack direction="horizontal" gap={5} >
-                  <img src={ProductInfoImg} width={"75px"} alt="Product Information"/>
+                <Stack direction="horizontal" gap={5}>
+                  <img
+                    src={ProductInfoImg}
+                    width={"75px"}
+                    alt="Product Information"
+                  />
                   <div>
                     <h4 className="fw-bold mb-1">Product Information</h4>
                     <p className="mb-1">
@@ -109,8 +115,12 @@ us directly—our specialists will be happy to assist you.
                     <p className="text-primary mb-0">Learn More</p>
                   </div>
                 </Stack>
-                <Stack direction="horizontal" gap={5} >
-                  <img src={CareerOppImg} width={"75px"} alt="career opportunities"/>
+                <Stack direction="horizontal" gap={5}>
+                  <img
+                    src={CareerOppImg}
+                    width={"75px"}
+                    alt="career opportunities"
+                  />
                   <div>
                     <h4 className="fw-bold mb-1">Career Opportunities</h4>
                     <p className="mb-1">
@@ -121,18 +131,42 @@ us directly—our specialists will be happy to assist you.
                   </div>
                 </Stack>
                 <Stack direction="horizontal" gap={5}>
-                  <img src={BusinessInqImg} width={"75px"} alt="Business Inquiries"/>
+                  <img
+                    src={BusinessInqImg}
+                    width={"75px"}
+                    alt="Business Inquiries"
+                  />
                   <div>
                     <h4 className="fw-bold mb-1">Business Inquiries</h4>
-                    <p className="mb-1">Contact our sales team to learn more about UDP CLOUD.</p>
-                    <a href="mailto:sales@udpcloud.com.my" className="text-primary text-decoration-none">sales@udpcloud.com.my</a>
+                    <p className="mb-1">
+                      Contact our sales team to learn more about UDP CLOUD.
+                    </p>
+                    <a
+                      href="mailto:sales@udpcloud.com.my"
+                      className="text-primary text-decoration-none"
+                    >
+                      sales@udpcloud.com.my
+                    </a>
                   </div>
                 </Stack>
               </Stack>
             </Col>
             <Col xs={12} sm={7}>
-              <Card bg={"light"} key={"Light"} text={"dark"} className="mb-2" style={{'borderRadius': '30px', 'border': 'none', 'boxShadow': 'rgb(42, 190, 209) 3px 6px 0px 2px'}}>
-                <Card.Body className="bg-white" style={{'borderRadius': '30px', padding: '35px 45px'}}>
+              <Card
+                bg={"light"}
+                key={"Light"}
+                text={"dark"}
+                className="mb-2"
+                style={{
+                  borderRadius: "30px",
+                  border: "none",
+                  boxShadow: "rgb(42, 190, 209) 3px 6px 0px 2px",
+                }}
+              >
+                <Card.Body
+                  className="bg-white"
+                  style={{ borderRadius: "30px", padding: "35px 45px" }}
+                >
                   <Card.Title className="mb-3 fw-bold">
                     Got questions? We'd love to hear from you!{" "}
                   </Card.Title>
@@ -232,7 +266,17 @@ We will respond to you as soon as possible."
                       />
                     </Form.Group>
 
-                    <Button className="text-white" variant="primary" type="submit" size="sm" style={{width: '100px', borderRadius: '30px', fontSize: '16px'}}>
+                    <Button
+                      className="text-white"
+                      variant="primary"
+                      type="submit"
+                      size="sm"
+                      style={{
+                        width: "100px",
+                        borderRadius: "30px",
+                        fontSize: "16px",
+                      }}
+                    >
                       Submit
                     </Button>
                   </Form>
@@ -262,14 +306,19 @@ We will respond to you as soon as possible."
             <Col xs={3}>
               <h4 className="text-primary mb-4 fw-bold">Get in Touch</h4>
               <Stack direction="horizontal" gap={2}>
-                <div style={{'width': '15px'}}>
+                <div style={{ width: "15px" }}>
                   <FontAwesomeIcon icon={faWhatsapp} className="text-primary" />
                 </div>
-                <span>Tel: <b>+603 5590 9999</b></span>
+                <span>
+                  Tel: <b>+603 5590 9999</b>
+                </span>
               </Stack>
               <Stack direction="horizontal" gap={2}>
-                <div className="align-self-start" style={{'width': '15px'}}>
-                  <FontAwesomeIcon icon={faLocationDot} className="text-primary" />
+                <div className="align-self-start" style={{ width: "15px" }}>
+                  <FontAwesomeIcon
+                    icon={faLocationDot}
+                    className="text-primary"
+                  />
                 </div>
                 <div className="">
                   <p className="mb-0">
@@ -280,7 +329,7 @@ We will respond to you as soon as possible."
                 </div>
               </Stack>
               <Stack direction="horizontal" gap={2}>
-                <div style={{'width': '15px'}}>
+                <div style={{ width: "15px" }}>
                   <FontAwesomeIcon icon={faEnvelope} className="text-primary" />
                 </div>
                 <a
