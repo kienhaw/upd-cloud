@@ -23,6 +23,7 @@ $primary: #2abed1;
 
 p {
   font-weight: 500;
+  line-height: 150%;
 }
 
 img {
@@ -31,7 +32,7 @@ img {
 
 .circle-box {
   width: 95px;
-  height: 90px;
+  height: 93px;
   background-color: $primary;
   padding: 10px;
   border-radius: 50%;
@@ -42,4 +43,34 @@ img {
       font-size: 20px;
     }
   }
+}
+
+.solution-card {
+  border-radius: 30px;
+  border: 3px solid $primary;
+  .bg-primary-light {
+    background-color: #bbebf1;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+  }
+  .card-body {
+    height: 19vh;
+  }
+}
+
+.infrastructure,
+.professional {
+  div {
+    text-align: center;
+  }
+  p {
+    font-size: 9px;
+    line-height: 95%;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+}
+
+.trusted-partners {
+  margin-bottom: 20px;
 }

@@ -4,10 +4,10 @@ import { ROOT } from "./configs/routeNames";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
-import { TranslateProvider } from './translate';
+import { TranslateProvider } from "./translate";
 
-import Home from 'Modules/Home';
-import NoPage from 'Modules/Home/NoPage';
+import Home from "Modules/Home";
+import NoPage from "Modules/Home/NoPage";
 
 import { TabTitle } from "./utils/GeneralFunction";
 
@@ -15,7 +15,7 @@ import { TabTitle } from "./utils/GeneralFunction";
 import { ResponsiveProvider } from "./app/contexts/ResponsiveContext";
 
 function App() {
-  TabTitle('Billing System');
+  TabTitle("UDP Cloud");
 
   return (
     <ResponsiveProvider>
@@ -23,10 +23,7 @@ function App() {
         <Provider store={store}>
           <Router>
             <Routes>
-              <Route
-                path={ROOT}
-                element={<Home />}
-              />
+              <Route path={ROOT} element={<Home />} />
               {/* <Route path="/register" element={<Login Comp={'Register'} />} /> */}
               <Route path="*" element={<NoPage />} />
             </Routes>
@@ -34,7 +31,7 @@ function App() {
         </Provider>
       </TranslateProvider>
     </ResponsiveProvider>
-  )
-};
+  );
+}
 
-export default App
+export default App;

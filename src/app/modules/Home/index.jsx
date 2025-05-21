@@ -23,6 +23,35 @@ import ContactUsImg from "../../../assets/img/contactus.png";
 import GraphImg from "../../../assets/img/graph.png";
 import MainImg from "../../../assets/img/main.png";
 import GlobalImg from "../../../assets/img/global.png";
+import LowerPricesImg from "../../../assets/img/icons/lower-price.png";
+import SupportIcon from "../../../assets/img/icons/24-7.png";
+import ArchIcon from "../../../assets/img/icons/architect.png";
+import SecurityIcon from "../../../assets/img/icons/security.png";
+import GoogleCloudIcon from "../../../assets/img/icons/google-cloud.png";
+import AwsIcon from "../../../assets/img/icons/aws.png";
+import AlibabaIcon from "../../../assets/img/icons/alibaba.png";
+import CloudFareIcon from "../../../assets/img/icons/cloudfare.png";
+import CdnIcon from "../../../assets/img/icons/cdn.png";
+import TenantCloudIcon from "../../../assets/img/icons/tenant-cloud.png";
+import HuaweiIcon from "../../../assets/img/icons/huawei.png";
+import AzureIcon from "../../../assets/img/icons/azure.png";
+import InfraIcon from "../../../assets/img/icons/infra.png";
+import CloudSecurIcon from "../../../assets/img/icons/cloud-secu.png";
+import GlobalSmsIcon from "../../../assets/img/icons/global-sms.png";
+import TrustSecuIcon from "../../../assets/img/icons/trust-security.png";
+import ServicesIcon from "../../../assets/img/icons/services.png";
+import AiLearningIcon from "../../../assets/img/icons/ai-learning.png";
+import EducationIcon from "../../../assets/img/icons/education.png";
+import BankingIcon from "../../../assets/img/icons/banking.png";
+import GamingIcon from "../../../assets/img/icons/gaming.png";
+import BlockChainIcon from "../../../assets/img/icons/block-chain.png";
+import BigDataIcon from "../../../assets/img/icons/big-data.png";
+import NewsIcon from "../../../assets/img/icons/news.png";
+import HealthCareIcon from "../../../assets/img/icons/healthcare.png";
+import RetailIcon from "../../../assets/img/icons/retail.png";
+import TransportationIcon from "../../../assets/img/icons/transportation.png";
+import CloudDesignIcon from "../../../assets/img/icons/cloud-design.png";
+import CloudBlueIcon from "../../../assets/img/icons/cloud-blue.png";
 
 export default (props) => {
   const {
@@ -54,13 +83,13 @@ export default (props) => {
             />
           </Navbar.Brand>
           <Nav className="ms-auto">
-            <Nav.Link className="navlink-width" href="#home">
+            <Nav.Link className="navlink-width" href="#global">
               Cloud Products & Services
             </Nav.Link>
-            <Nav.Link className="navlink-width" href="#features">
+            <Nav.Link className="navlink-width" href="#aboutus">
               About Us
             </Nav.Link>
-            <Nav.Link className="navlink-width" href="#pricing">
+            <Nav.Link className="navlink-width" href="#contactus">
               Contact Us
             </Nav.Link>
           </Nav>
@@ -71,7 +100,7 @@ export default (props) => {
       {/* Main section */}
       <section id="main" style={{ borderBottom: "1px solid #f3f3f3" }}>
         <Container
-          style={{ display: "flex", alignItems: "center", height: "60vh" }}
+          style={{ display: "flex", alignItems: "center", minHeight: "60vh" }}
         >
           <Row className="w-100 gx-5">
             <Col xs={12} sm={7} className="mt-5">
@@ -113,7 +142,7 @@ export default (props) => {
       {/* Global section */}
       <section id="global" style={{ borderBottom: "1px solid #f3f3f3" }}>
         <Container
-          style={{ display: "flex", alignItems: "center", height: "65vh" }}
+          style={{ display: "flex", alignItems: "center", minHeight: "65vh" }}
         >
           <Row className="w-100 gx-3">
             <Col xs={12} sm={6} className="mt-5">
@@ -179,10 +208,283 @@ export default (props) => {
         </Container>
       </section>
 
+      {/* Solution section */}
+      <section id="solution" style={{ borderBottom: "1px solid #f3f3f3" }}>
+        <Container
+          className="position-relative"
+          style={{ marginTop: "4em", marginBottom: "4em" }}
+        >
+          <img
+            src={CloudBlueIcon}
+            alt=""
+            style={{ position: "absolute", right: "75px", top: "60px" }}
+            width="55px"
+          />
+          <img
+            src={CloudBlueIcon}
+            alt=""
+            style={{ position: "absolute", left: "50px", top: "10px" }}
+            width="40px"
+          />
+          <Row className="mb-5 justify-content-center">
+            <Col sm={9}>
+              <div
+                className="text-center"
+                style={{
+                  borderRadius: "15px",
+                  background: "#2abed1",
+                  padding: "15px",
+                  color: "white",
+                  position: "relative",
+                }}
+              >
+                <h3>One-Stop Multicloud Solutions</h3>
+                <p className="mb-0">
+                  Discover comprehensive solutions that transform and elevate
+                  your business operations.
+                </p>
+                <img
+                  src={CloudDesignIcon}
+                  alt=""
+                  style={{ position: "absolute", left: "25px", bottom: "15px" }}
+                  width="55px"
+                />
+                <img
+                  src={CloudDesignIcon}
+                  alt=""
+                  style={{ position: "absolute", right: "25px", top: "15px" }}
+                  width="55px"
+                />
+              </div>
+            </Col>
+          </Row>
+          <Row className="gx-2 mb-5">
+            <Col sm={4}>
+              <Card className="solution-card">
+                <Card.Title
+                  className="text-center p-2 fs-3 fw-bold bg-primary-light mb-0"
+                  style={{ borderBottom: "1px solid #f3f3f3" }}
+                >
+                  Infrastructure
+                </Card.Title>
+                <Card.Body className="p-1">
+                  <div className="w-100">
+                    <p className="text-center">
+                      <b>Our Dedicated Team</b>
+                    </p>
+                    <Stack
+                      direction="horizontal"
+                      gap={1}
+                      className="infrastructure"
+                    >
+                      <div className="w-25 align-self-start">
+                        <img src={LowerPricesImg} alt="" width={"50px"} />
+                        <p className="mt-1">
+                          <b className="text-primary">Get Lower Prices</b>
+                          <br />
+                          by Switching Services with the Same Cloud Provider
+                        </p>
+                      </div>
+                      <div className="w-25 align-self-start">
+                        <img src={SupportIcon} alt="" width={"50px"} />
+                        <p className="mt-1">
+                          <b className="text-primary">24/7</b>
+                          <br />
+                          Support and Operation
+                        </p>
+                      </div>
+                      <div className="w-25 align-self-start">
+                        <img src={ArchIcon} alt="" width={"50px"} />
+                        <p className="mt-1">Cloud Solutions Architects</p>
+                      </div>
+                      <div className="w-25 align-self-start">
+                        <img src={SecurityIcon} alt="" width={"50px"} />
+                        <p className="mt-1">Security Operations (SecOps)</p>
+                      </div>
+                    </Stack>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col sm={4}>
+              <Card className="solution-card">
+                <Card.Title
+                  className="text-center p-2 fs-3 fw-bold bg-primary-light mb-0"
+                  style={{ borderBottom: "1px solid #f3f3f3" }}
+                >
+                  Trusted Partners
+                </Card.Title>
+                <Card.Body
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <div className="w-100">
+                    <Stack
+                      direction="horizontal"
+                      gap={3}
+                      className="trusted-partners"
+                    >
+                      <div className="w-25">
+                        <img src={GoogleCloudIcon} alt="" width={"100%"} />
+                      </div>
+                      <div className="w-25 text-center">
+                        <img src={AwsIcon} alt="" width={"75%"} />
+                      </div>
+                      <div className="w-25">
+                        <img src={AlibabaIcon} alt="" width={"100%"} />
+                      </div>
+                      <div className="w-25">
+                        <img src={CloudFareIcon} alt="" width={"100%"} />
+                      </div>
+                    </Stack>
+                    <Stack direction="horizontal" gap={3} className="mb-3">
+                      <div className="w-25">
+                        <img src={CdnIcon} alt="" width={"100%"} />
+                      </div>
+                      <div className="w-25 text-center">
+                        <img src={TenantCloudIcon} alt="" width={"75%"} />
+                      </div>
+                      <div className="w-25">
+                        <img src={HuaweiIcon} alt="" width={"100%"} />
+                      </div>
+                      <div className="w-25">
+                        <img src={AzureIcon} alt="" width={"100%"} />
+                      </div>
+                    </Stack>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col sm={4}>
+              <Card className="solution-card">
+                <Card.Title
+                  className="text-center p-2 fs-3 fw-bold bg-primary-light mb-0"
+                  style={{ borderBottom: "1px solid #f3f3f3" }}
+                >
+                  Professional Services
+                </Card.Title>
+                <Card.Body className="professional">
+                  <div className="w-100">
+                    <Row className="mb-3">
+                      <Col sm={4} className="text-center">
+                        <img src={InfraIcon} alt="" width={"50%"} />
+                        <p className="mt-1 mb-0">Cloud Infrastructure</p>
+                      </Col>
+                      <Col sm={4} className="text-center">
+                        <img src={CloudSecurIcon} alt="" width={"50%"} />
+                        <p className="mt-1 mb-0">Cloud Security</p>
+                      </Col>
+                      <Col sm={4} className="text-center">
+                        <img src={GlobalSmsIcon} alt="" width={"50%"} />
+                        <p className="mt-1 mb-0">Global SMS</p>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col sm={4} className="text-center">
+                        <img src={TrustSecuIcon} alt="" width={"50%"} />
+                        <p className="mt-1 mb-0">Zero Trust Security</p>
+                      </Col>
+                      <Col sm={4} className="text-center">
+                        <img src={ServicesIcon} alt="" width={"50%"} />
+                        <p className="mt-1 mb-0">Managed Services</p>
+                      </Col>
+                      <Col sm={4} className="text-center">
+                        <img src={AiLearningIcon} alt="" width={"50%"} />
+                        <p className="mt-1 mb-0">AI & Machine Learning</p>
+                      </Col>
+                    </Row>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+          <Row className="mb-4 justify-content-center">
+            <Col sm={6}>
+              <div
+                className="text-center"
+                style={{
+                  padding: "15px",
+                  border: "1px solid #2abed1",
+                  borderRadius: "30px",
+                }}
+              >
+                <h3 className="mb-0">Tailored Solutions for Your Industry</h3>
+              </div>
+            </Col>
+          </Row>
+          <Row className="mb-4">
+            <Col sm={12}>
+              <Stack
+                gap={1}
+                direction="horizontal"
+                className="justify-content-center"
+              >
+                <div className="text-center" style={{ width: "100px" }}>
+                  <img src={EducationIcon} alt="" width={"50px"} />
+                  <p className="mt-2 mb-0 fw-bold" style={{ fontSize: "11px" }}>
+                    Education
+                  </p>
+                </div>
+                <div className="text-center" style={{ width: "100px" }}>
+                  <img src={BankingIcon} alt="" width={"50px"} />
+                  <p className="mt-2 mb-0 fw-bold" style={{ fontSize: "11px" }}>
+                    Banking
+                  </p>
+                </div>
+                <div className="text-center" style={{ width: "100px" }}>
+                  <img src={GamingIcon} alt="" width={"50px"} />
+                  <p className="mt-2 mb-0 fw-bold" style={{ fontSize: "11px" }}>
+                    Gaming
+                  </p>
+                </div>
+                <div className="text-center" style={{ width: "100px" }}>
+                  <img src={BlockChainIcon} alt="" width={"50px"} />
+                  <p className="mt-2 mb-0 fw-bold" style={{ fontSize: "11px" }}>
+                    Block Chain
+                  </p>
+                </div>
+                <div className="text-center" style={{ width: "100px" }}>
+                  <img src={BigDataIcon} alt="" width={"50px"} />
+                  <p className="mt-2 mb-0 fw-bold" style={{ fontSize: "11px" }}>
+                    AI & Big Data
+                  </p>
+                </div>
+                <div className="text-center" style={{ width: "100px" }}>
+                  <img src={NewsIcon} alt="" width={"50px"} />
+                  <p className="mt-2 mb-0 fw-bold" style={{ fontSize: "11px" }}>
+                    News Media
+                  </p>
+                </div>
+                <div className="text-center" style={{ width: "100px" }}>
+                  <img src={HealthCareIcon} alt="" width={"50px"} />
+                  <p className="mt-2 mb-0 fw-bold" style={{ fontSize: "11px" }}>
+                    Healthcare
+                  </p>
+                </div>
+                <div className="text-center" style={{ width: "100px" }}>
+                  <img src={RetailIcon} alt="" width={"50px"} />
+                  <p className="mt-2 mb-0 fw-bold" style={{ fontSize: "11px" }}>
+                    Retail
+                  </p>
+                </div>
+                <div className="text-center" style={{ width: "100px" }}>
+                  <img src={TransportationIcon} alt="" width={"50px"} />
+                  <p className="mt-2 mb-0 fw-bold" style={{ fontSize: "11px" }}>
+                    Transportation
+                  </p>
+                </div>
+              </Stack>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
       {/* About section */}
       <section id="aboutus">
         <Container
-          style={{ display: "flex", alignItems: "center", height: "65vh" }}
+          style={{ display: "flex", alignItems: "center", minHeight: "65vh" }}
         >
           <Row>
             <Col sm={12}>
@@ -230,7 +532,7 @@ export default (props) => {
       {/* height should be depends on screensize */}
       <section id="contactus">
         <Container
-          style={{ display: "flex", alignItems: "center", height: "65vh" }}
+          style={{ display: "flex", alignItems: "center", minHeight: "65vh" }}
         >
           <Row className="w-100 gx-5">
             <Col xs={12} sm={7} className="mt-5">
@@ -253,7 +555,11 @@ export default (props) => {
 
       {/* Inquiry section */}
       <section id="inquiry" className="py-5">
-        <Container fluid={"md"} className="my-3" style={{ minHeight: "60vh" }}>
+        <Container
+          fluid={"md"}
+          className="my-3"
+          style={{ minminHeight: "60vh" }}
+        >
           <Row className="gx-5">
             <Col xs={12} sm={5} className="mt-4">
               <h3 className="text-primary mb-4 fw-bold">
