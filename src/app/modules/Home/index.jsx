@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Row,
@@ -9,6 +9,7 @@ import {
   Card,
   Form,
   Button,
+  ToastContainer,
 } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import LogoImg from "../../../assets/img/logo.png";
@@ -53,6 +54,8 @@ import TransportationIcon from "../../../assets/img/icons/transportation.png";
 import CloudDesignIcon from "../../../assets/img/icons/cloud-design.png";
 import CloudBlueIcon from "../../../assets/img/icons/cloud-blue.png";
 
+import { submitQuestion } from "./ducks/services";
+
 export default (props) => {
   const {
     register,
@@ -62,14 +65,23 @@ export default (props) => {
 
   const onSubmit = (val) => {
     console.log(val);
+
+    // form the payload once the api is ready
+    // add spinner to page
+    const payload = {
+      ...val,
+    };
+
+    submitQuestion(payload)
+      .then(() => {
+        alert("Question submitted successfully!");
+      })
+      .catch((e) => {
+        alert(e.message ?? "Something went wrong..");
+      });
   };
 
   return (
-    // add layout template here for header and footer
-    // and each section to be placed in separate component
-    // remove usage of antd, pure bootstrap - https://react-bootstrap.netlify.app/docs/components/navbar
-    // can retain the implementation of the atoms/molecules
-    // but instead of antd, we should replace component from antd to bootstrap
     <>
       {/* header */}
       <Navbar className="bg-body-udp" sticky="top">

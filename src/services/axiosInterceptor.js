@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { message } from 'antd';
 import { baseUrl } from '../configs/constants';
 
 const authInterceptors = axios.create({
@@ -38,7 +37,6 @@ authInterceptors.interceptors.response.use(
     if ([401, 1001, 1002].includes(error.response.data.code) || error.response.data.message === "Unauthorized") {
       localStorage.clear();
       setTimeout(() => {
-        message.error(error.response.data.message);
         setTimeout(() => {
           window.location.assign('/')
         }, 500);
