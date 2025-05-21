@@ -22,6 +22,7 @@ import ProductInfoImg from "../../../assets/img/product-info.png";
 import ContactUsImg from "../../../assets/img/contactus.png";
 import GraphImg from "../../../assets/img/graph.png";
 import MainImg from "../../../assets/img/main.png";
+import GlobalImg from "../../../assets/img/global.png";
 
 export default (props) => {
   const {
@@ -104,6 +105,75 @@ export default (props) => {
             </Col>
             <Col xs={12} sm={5} className="align-self-center">
               <img src={MainImg} alt="" className="w-100" />
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* Global section */}
+      <section id="global" style={{ borderBottom: "1px solid #f3f3f3" }}>
+        <Container
+          style={{ display: "flex", alignItems: "center", height: "65vh" }}
+        >
+          <Row className="w-100 gx-3">
+            <Col xs={12} sm={6} className="mt-5">
+              <h2 className="text-primary fw-bold fs-1">
+                Go Beyond Multicloud
+              </h2>
+              <h4 className="fw-bold mb-3">
+                More than just One-Stop Cloud Offerings,
+                <br />
+                We provide Comprehensive Observability.
+              </h4>
+              <p style={{ width: "85%" }}>
+                We are multicloud expert that pushes the boundaries of what’s
+                possible. We offer a comprehensive suite of cloud computing
+                services designed to empower innovation and drive business
+                growth. Our advanced observability platform ensures that you
+                have full visibility and control over your multicloud usage, no
+                matter where you are on your cloud journey.
+              </p>
+            </Col>
+            <Col xs={12} sm={6}>
+              <img
+                src={GlobalImg}
+                alt=""
+                style={{
+                  width: "125%",
+                  marginLeft: "-23%",
+                  marginTop: "-40px",
+                }}
+              />
+              <div
+                className="text-center"
+                style={{ marginTop: "-100px", marginLeft: "50px" }}
+              >
+                <h3 className="text-primary fw-bold mb-2">CLOUD SERVICE</h3>
+                <Stack
+                  direction="horizontal"
+                  gap={4}
+                  className="justify-content-center w-100"
+                >
+                  <div className="circle-box">
+                    <p className="mb-0">8</p>
+                    <p className="mb-0" style={{ lineHeight: "100%" }}>
+                      Cloud partners
+                    </p>
+                  </div>
+                  <div className="circle-box">
+                    <p className="mb-0">30+</p>
+                    <p className="mb-0" style={{ lineHeight: "100%" }}>
+                      Customers Worldwide
+                    </p>
+                  </div>
+                  <div className="circle-box">
+                    <p className="mb-0">120+</p>
+                    <p className="mb-0" style={{ lineHeight: "100%" }}>
+                      Cloud Certifications
+                    </p>
+                  </div>
+                </Stack>
+              </div>
             </Col>
           </Row>
         </Container>

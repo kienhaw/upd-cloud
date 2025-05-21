@@ -28,3 +28,18 @@ p {
 img {
   -webkit-user-drag: none;
 }
+
+.circle-box {
+  width: 95px;
+  height: 90px;
+  background-color: $primary;
+  padding: 10px;
+  border-radius: 50%;
+  p {
+    color: white;
+    font-size: 13px;
+    &:first-child {
+      font-size: 20px;
+    }
+  }
+}
