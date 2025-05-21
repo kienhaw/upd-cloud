@@ -20,6 +20,8 @@ import BusinessInqImg from "../../../assets/img/business-inquiries.png";
 import CareerOppImg from "../../../assets/img/career-opportunities.png";
 import ProductInfoImg from "../../../assets/img/product-info.png";
 import ContactUsImg from "../../../assets/img/contactus.png";
+import GraphImg from "../../../assets/img/graph.png";
+import MainImg from "../../../assets/img/main.png";
 
 export default (props) => {
   const {
@@ -65,6 +67,92 @@ export default (props) => {
       </Navbar>
 
       {/* body */}
+      {/* Main section */}
+      <section id="main" style={{ borderBottom: "1px solid #f3f3f3" }}>
+        <Container
+          style={{ display: "flex", alignItems: "center", height: "55vh" }}
+        >
+          <Row className="w-100 gx-5">
+            <Col xs={12} sm={7} className="mt-5">
+              <div>
+                <h2 className="text-primary fw-bold mb-4 fs-1">
+                  Powerful Multi-Cloud
+                  <br /> Management Platform
+                </h2>
+                <p className="">
+                  Integrate multi-cloud products through a single platform to
+                  monitor traffic, analyze usage, and manage billing for you.
+                  Enabling businesses to effortlessly oversee cloud usage and
+                  costs, enhancing the efficiency and convenience of expense
+                  management.
+                </p>
+                <Button
+                  className="text-white"
+                  variant="primary"
+                  type="submit"
+                  size="lg"
+                  style={{
+                    width: "130px",
+                    borderRadius: "30px",
+                    fontSize: "16px",
+                    lineHeight: "normal",
+                  }}
+                >
+                  <b>Learn more</b>
+                </Button>
+              </div>
+            </Col>
+            <Col xs={12} sm={5} className="align-self-center">
+              <img src={MainImg} alt="" className="w-100" />
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* About section */}
+      <section id="aboutus">
+        <Container className="my-5">
+          <Row>
+            <Col sm={12}>
+              <h2 className="text-primary fw-bold mb-4 fs-1">
+                UDP CLOUD — Your Cloud Innovation Engine
+              </h2>
+            </Col>
+            <Col sm={7}>
+              <p>
+                <b className="text-primary">UDP CLOUD</b> brings together
+                technology experts from Malaysia and China. With solid
+                professional expertise and diverse industry experience, we
+                specialize in providing enterprises with cloud-native
+                development, big data analytics, and cloud architecture
+                optimization services.
+              </p>
+              <p>
+                Our team not only understands various corporate IT needs but
+                also excels in rapidly implementing technology to drive business
+                growth. We have helped numerous clients achieve digital
+                transformation, enhance operational efficiency, and earn
+                widespread trust and recognition.
+              </p>
+              <p>
+                By choosing <b className="text-primary">UDP CLOUD</b>, you’ll
+                gain:
+              </p>
+              <p>• Expert technical support & consulting</p>
+              <p>• Tailored cloud solutions</p>
+              <p>• Continuous optimization & reliable operation assurance</p>
+
+              <h4 className="text-primary" style={{ fontWeight: "700" }}>
+                We look forward to becoming your trusted long-term partner,
+                working together to embrace the digital future.
+              </h4>
+            </Col>
+            <Col sm={5} className="align-self-end">
+              <img src={GraphImg} alt="" className="w-100" />
+            </Col>
+          </Row>
+        </Container>
+      </section>
 
       {/* Contact section */}
       {/* height should be depends on screensize */}
