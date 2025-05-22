@@ -73,24 +73,27 @@ export default (props) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (val) => {
-    console.log(val);
+    setLoading(true);
 
-    // form the payload once the api is ready
-    // add spinner to page
     const payload = {
       ...val,
     };
 
     submitQuestion(payload)
       .then(() => {
+        reset();
         alert("Question submitted successfully!");
       })
       .catch((e) => {
         alert(e.message ?? "Something went wrong..");
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -222,7 +225,8 @@ export default (props) => {
       </Navbar>
 
       {/* Main section */}
-      <section id="main" style={{ borderBottom: "1px solid #f3f3f3" }}>
+      {/* style={{ borderBottom: "1px solid #f3f3f3" }} */}
+      <section id="main">
         <Container
           style={{ display: "flex", alignItems: "center", minHeight: "60vh" }}
         >
@@ -257,7 +261,7 @@ export default (props) => {
       </section>
 
       {/* Global section */}
-      <section id="global" style={{ borderBottom: "1px solid #f3f3f3" }}>
+      <section id="global">
         <Container
           style={{ display: "flex", alignItems: "center", minHeight: "65vh" }}
         >
@@ -329,7 +333,7 @@ export default (props) => {
       </section>
 
       {/* Solution section */}
-      <section id="solution" style={{ borderBottom: "1px solid #f3f3f3" }}>
+      <section id="solution">
         <Container
           className="position-relative"
           style={{ marginTop: "4em", marginBottom: "4em" }}
@@ -378,10 +382,7 @@ export default (props) => {
           <Row className="gx-2 mb-5">
             <Col sm={4}>
               <Card className="solution-card">
-                <Card.Title
-                  className="text-center p-2 fs-3 fw-bold bg-primary-light mb-0"
-                  style={{ borderBottom: "1px solid #f3f3f3" }}
-                >
+                <Card.Title className="text-center p-2 fs-3 fw-bold bg-primary-light mb-0">
                   {t("Solution.infra")}
                 </Card.Title>
                 <Card.Body className="p-1">
@@ -440,7 +441,9 @@ export default (props) => {
                       <div className="w-25 align-self-start">
                         <img src={ArchIcon} alt="" width={"50px"} />
                         <div className="mt-1">
-                          {isEn && <span>Cloud Solutions Architects</span>}
+                          {isEn && (
+                            <p className="my-0">Cloud Solutions Architects</p>
+                          )}
                           {!isEn && (
                             <>
                               <p className="my-1">云解决方案</p>
@@ -467,10 +470,7 @@ export default (props) => {
             </Col>
             <Col sm={4}>
               <Card className="solution-card">
-                <Card.Title
-                  className="text-center p-2 fs-3 fw-bold bg-primary-light mb-0"
-                  style={{ borderBottom: "1px solid #f3f3f3" }}
-                >
+                <Card.Title className="text-center p-2 fs-3 fw-bold bg-primary-light mb-0">
                   {t("Solution.trusted")}
                 </Card.Title>
                 <Card.Body
@@ -518,29 +518,26 @@ export default (props) => {
             </Col>
             <Col sm={4}>
               <Card className="solution-card">
-                <Card.Title
-                  className="text-center p-2 fs-3 fw-bold bg-primary-light mb-0"
-                  style={{ borderBottom: "1px solid #f3f3f3" }}
-                >
+                <Card.Title className="text-center p-2 fs-3 fw-bold bg-primary-light mb-0">
                   {t("Solution.proff")}
                 </Card.Title>
                 <Card.Body className="professional">
                   <div className="w-100">
                     <Row className="mb-3">
                       <Col xs={4} className="text-center">
-                        <img src={InfraIcon} alt="" width={"50%"} />
+                        <img src={InfraIcon} alt="" width={"40px"} />
                         <p className="mt-1 mb-0">
                           {t("Solution.prof.cloudInfra")}
                         </p>
                       </Col>
                       <Col xs={4} className="text-center">
-                        <img src={CloudSecurIcon} alt="" width={"50%"} />
+                        <img src={CloudSecurIcon} alt="" width={"40px"} />
                         <p className="mt-1 mb-0">
                           {t("Solution.prof.cloudSecu")}
                         </p>
                       </Col>
                       <Col xs={4} className="text-center">
-                        <img src={GlobalSmsIcon} alt="" width={"50%"} />
+                        <img src={GlobalSmsIcon} alt="" width={"40px"} />
                         <p className="mt-1 mb-0">
                           {t("Solution.prof.globalSms")}
                         </p>
@@ -548,19 +545,19 @@ export default (props) => {
                     </Row>
                     <Row>
                       <Col xs={4} className="text-center">
-                        <img src={TrustSecuIcon} alt="" width={"50%"} />
+                        <img src={TrustSecuIcon} alt="" width={"40px"} />
                         <p className="mt-1 mb-0">
                           {t("Solution.prof.zeroSecu")}
                         </p>
                       </Col>
                       <Col xs={4} className="text-center">
-                        <img src={ServicesIcon} alt="" width={"50%"} />
+                        <img src={ServicesIcon} alt="" width={"40px"} />
                         <p className="mt-1 mb-0">
                           {t("Solution.prof.managedServices")}
                         </p>
                       </Col>
                       <Col xs={4} className="text-center">
-                        <img src={AiLearningIcon} alt="" width={"50%"} />
+                        <img src={AiLearningIcon} alt="" width={"40px"} />
                         <p className="mt-1 mb-0">
                           {t("Solution.prof.aiMachine")}
                         </p>
@@ -691,7 +688,7 @@ export default (props) => {
       {/* Contact section */}
       <section id="contactus">
         <Container
-          style={{ display: "flex", alignItems: "center", minHeight: "65vh" }}
+          style={{ display: "flex", alignItems: "center", minHeight: "70vh" }}
         >
           <Row className="w-100 gx-5">
             <Col xs={12} sm={7} className="mt-5">
@@ -855,13 +852,13 @@ export default (props) => {
                       <Form.Control
                         type="text"
                         placeholder={t("Inquiry.form.phone")}
-                        {...register("phone", {
+                        {...register("contact", {
                           required: t("Common.Required.message"),
                         })}
-                        isInvalid={!!errors.phone}
+                        isInvalid={!!errors.contact}
                       />
                       <Form.Control.Feedback type="invalid">
-                        {errors.phone?.message}
+                        {errors.contact?.message}
                       </Form.Control.Feedback>
                     </Form.Group>
 
@@ -869,16 +866,20 @@ export default (props) => {
                       className="mb-3"
                       controlId="exampleForm.ControlInput4"
                     >
-                      <Form.Control
-                        type="text"
-                        placeholder={t("Inquiry.form.type")}
-                        {...register("inquiry", {
+                      <Form.Select
+                        {...register("issueType", {
                           required: t("Common.Required.message"),
                         })}
-                        isInvalid={!!errors.inquiry}
-                      />
+                        isInvalid={!!errors.issueType}
+                      >
+                        <option value="">{t("Inquiry.form.type")}</option>
+                        <option value="technical">Technical</option>
+                        <option value="billing">Billing</option>
+                        <option value="general">General</option>
+                        <option value="other">Other</option>
+                      </Form.Select>
                       <Form.Control.Feedback type="invalid">
-                        {errors.inquiry?.message}
+                        {errors.issueType?.message}
                       </Form.Control.Feedback>
                     </Form.Group>
 
@@ -887,10 +888,17 @@ export default (props) => {
                       controlId="exampleForm.ControlTextarea1"
                     >
                       <Form.Control
+                        {...register("issueContent", {
+                          required: t("Common.Required.message"),
+                        })}
                         as="textarea"
                         rows={5}
                         placeholder={t("Inquiry.form.desc")}
+                        isInvalid={!!errors.issueContent}
                       />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.issueContent?.message}
+                      </Form.Control.Feedback>
                     </Form.Group>
 
                     <Button
