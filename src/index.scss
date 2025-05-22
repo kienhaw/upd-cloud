@@ -55,7 +55,20 @@ img {
   }
 }
 
+@media (max-width: 474px) {
+  .tailored-icons {
+    flex-wrap: wrap;
+  }
+  #aboutus {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+
 .solution-card {
+  @media (max-width: 474px) {
+    margin-bottom: 15px;
+  }
   border-radius: 30px;
   border: 3px solid $primary;
   .bg-primary-light {

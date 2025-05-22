@@ -226,7 +226,7 @@ export default (props) => {
         <Container
           style={{ display: "flex", alignItems: "center", minHeight: "60vh" }}
         >
-          <Row className="w-100 gx-5">
+          <Row className="gx-sm-5">
             <Col xs={12} sm={7} className="mt-5">
               <div>
                 <h2 className="text-primary fw-bold mb-4 fs-1">
@@ -269,7 +269,7 @@ export default (props) => {
               )}
               <p style={{ width: "85%" }}>{t("Global.desc")}</p>
             </Col>
-            <Col xs={12} sm={6}>
+            <Col xs={12} sm={6} className="mt-5 mt-sm-0">
               <img
                 src={GlobalImg}
                 alt=""
@@ -439,7 +439,7 @@ export default (props) => {
                       </div>
                       <div className="w-25 align-self-start">
                         <img src={ArchIcon} alt="" width={"50px"} />
-                        <p className="mt-1">
+                        <div className="mt-1">
                           {isEn && <span>Cloud Solutions Architects</span>}
                           {!isEn && (
                             <>
@@ -447,18 +447,18 @@ export default (props) => {
                               <p className="my-1">架构师</p>
                             </>
                           )}
-                        </p>
+                        </div>
                       </div>
                       <div className="w-25 align-self-start">
                         <img src={SecurityIcon} alt="" width={"50px"} />
-                        <p className="mt-1">
+                        <div className="mt-1">
                           {isEn ? (
-                            <span>Security Operations</span>
+                            <p>Security Operations</p>
                           ) : (
                             <p className="my-1">安全运维</p>
                           )}
-                          (SecOps)
-                        </p>
+                          <p className="my-0">(SecOps)</p>
+                        </div>
                       </div>
                     </Stack>
                   </div>
@@ -527,19 +527,19 @@ export default (props) => {
                 <Card.Body className="professional">
                   <div className="w-100">
                     <Row className="mb-3">
-                      <Col sm={4} className="text-center">
+                      <Col xs={4} className="text-center">
                         <img src={InfraIcon} alt="" width={"50%"} />
                         <p className="mt-1 mb-0">
                           {t("Solution.prof.cloudInfra")}
                         </p>
                       </Col>
-                      <Col sm={4} className="text-center">
+                      <Col xs={4} className="text-center">
                         <img src={CloudSecurIcon} alt="" width={"50%"} />
                         <p className="mt-1 mb-0">
                           {t("Solution.prof.cloudSecu")}
                         </p>
                       </Col>
-                      <Col sm={4} className="text-center">
+                      <Col xs={4} className="text-center">
                         <img src={GlobalSmsIcon} alt="" width={"50%"} />
                         <p className="mt-1 mb-0">
                           {t("Solution.prof.globalSms")}
@@ -547,19 +547,19 @@ export default (props) => {
                       </Col>
                     </Row>
                     <Row>
-                      <Col sm={4} className="text-center">
+                      <Col xs={4} className="text-center">
                         <img src={TrustSecuIcon} alt="" width={"50%"} />
                         <p className="mt-1 mb-0">
                           {t("Solution.prof.zeroSecu")}
                         </p>
                       </Col>
-                      <Col sm={4} className="text-center">
+                      <Col xs={4} className="text-center">
                         <img src={ServicesIcon} alt="" width={"50%"} />
                         <p className="mt-1 mb-0">
                           {t("Solution.prof.managedServices")}
                         </p>
                       </Col>
-                      <Col sm={4} className="text-center">
+                      <Col xs={4} className="text-center">
                         <img src={AiLearningIcon} alt="" width={"50%"} />
                         <p className="mt-1 mb-0">
                           {t("Solution.prof.aiMachine")}
@@ -590,7 +590,7 @@ export default (props) => {
               <Stack
                 gap={1}
                 direction="horizontal"
-                className="justify-content-center"
+                className="justify-content-center tailored-icons"
               >
                 <div className="text-center" style={{ width: "100px" }}>
                   <img src={EducationIcon} alt="" width={"50px"} />
@@ -719,10 +719,10 @@ export default (props) => {
           style={{ minminHeight: "60vh" }}
         >
           <Row className="gx-5">
-            <Col xs={12} sm={5} className="mt-4">
-              <h3 className="text-primary mb-4 fw-bold">
+            <Col xs={12} sm={5} className="my-4">
+              <h2 className="text-primary fw-bold mb-4 fs-1">
                 {t("Inquiry.title")}
-              </h3>
+              </h2>
               <Stack direction="vertical" gap={3}>
                 <Stack direction="horizontal" gap={5}>
                   <img
@@ -918,13 +918,13 @@ export default (props) => {
       <footer>
         <Container className="my-5">
           <Row>
-            <Col xs={6} className="mt-2">
+            <Col xs={12} sm={6} className="mt-2">
               <img src={FooterLogoImg} width={"30%"} />
               <div className="mt-3">
                 {t("Footer.knowMore")} <b>www.udpcloud.com.my</b>
               </div>
             </Col>
-            <Col xs={3}>
+            <Col xs={12} sm={3} className="mt-3 mt-sm-0">
               <h4 className="text-primary mb-4 fw-bold">
                 {t("Footer.quicklinks")}
               </h4>
@@ -944,7 +944,7 @@ export default (props) => {
                 </a>
               </p>
             </Col>
-            <Col xs={3}>
+            <Col xs={12} sm={3} className="mt-3 mt-sm-0">
               <h4 className="text-primary mb-4 fw-bold">
                 {t("Footer.getInTouch")}
               </h4>
