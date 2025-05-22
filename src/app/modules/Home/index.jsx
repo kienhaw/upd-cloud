@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   Row,
@@ -9,7 +9,7 @@ import {
   Card,
   Form,
   Button,
-  ToastContainer,
+  Spinner,
 } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import LogoImg from "../../../assets/img/logo.png";
@@ -53,10 +53,23 @@ import RetailIcon from "../../../assets/img/icons/retail.png";
 import TransportationIcon from "../../../assets/img/icons/transportation.png";
 import CloudDesignIcon from "../../../assets/img/icons/cloud-design.png";
 import CloudBlueIcon from "../../../assets/img/icons/cloud-blue.png";
+import {
+  useTranslate,
+  useTranslateDispatch,
+  useTranslateState,
+} from "../../../translate";
 
 import { submitQuestion } from "./ducks/services";
 
 export default (props) => {
+  const i18n = useTranslate(); // we get the utils functions
+  const { language } = useTranslateState(); // we get the utils functions
+  const { t } = i18n;
+  const dispatch = useTranslateDispatch();
+  const [loading, setLoading] = useState(false);
+
+  const isEn = language == "en";
+
   const {
     register,
     handleSubmit,
@@ -81,12 +94,75 @@ export default (props) => {
       });
   };
 
+  const switchLanguage = (lang) => {
+    if (lang == language) return;
+
+    setLoading(true);
+    document.body.style.overflow = "hidden";
+
+    setTimeout(() => {
+      dispatch({ type: "CHANGE_LANGUAGE", language: lang });
+      localStorage.setItem("lang", lang);
+      document.body.style.overflow = "auto";
+
+      setLoading(false);
+    }, 1000);
+  };
+
+  const [activeSection, setActiveSection] = useState("");
+
+  const handleScroll = () => {
+    const sections = document.querySelectorAll("section");
+    let currentSectionId = "";
+
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      // Check if the section is in the viewport
+      if (rect.top >= 0 && rect.top + 350 < window.innerHeight / 2) {
+        currentSectionId = section.id; // Set the current section ID
+      }
+    });
+
+    // Update the active section only if it has changed
+    if (currentSectionId !== activeSection) {
+      setActiveSection(currentSectionId);
+    } else {
+      //should only set null if its over this section
+      // setActiveSection(currentSectionId);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
+      {loading && (
+        <div
+          style={{
+            position: "fixed", // Use fixed to cover the viewport
+            top: 0,
+            left: 0,
+            height: "100vh",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "rgba(255, 255, 255, 0.5)", // Semi-transparent background
+            zIndex: 9999, // Ensure it is on top of other elements
+          }}
+        >
+          <Spinner animation={"border"} variant="primary" />
+        </div>
+      )}
       {/* header */}
-      <Navbar className="bg-body-udp" sticky="top">
+      <Navbar expand="lg" className="bg-body-udp" sticky="top">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="#main">
             <img
               src={LogoImg}
               width="75px"
@@ -94,21 +170,60 @@ export default (props) => {
               alt="React Bootstrap logo"
             />
           </Navbar.Brand>
-          <Nav className="ms-auto">
-            <Nav.Link className="navlink-width" href="#global">
-              Cloud Products & Services
-            </Nav.Link>
-            <Nav.Link className="navlink-width" href="#aboutus">
-              About Us
-            </Nav.Link>
-            <Nav.Link className="navlink-width" href="#contactus">
-              Contact Us
-            </Nav.Link>
-          </Nav>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto">
+              <Nav.Link
+                className="navlink-width"
+                href="#global"
+                active={activeSection === "global"}
+              >
+                {t("Navbar.cloud")}
+              </Nav.Link>
+              <Nav.Link
+                className="navlink-width"
+                href="#aboutus"
+                active={activeSection === "aboutus"}
+              >
+                {t("Navbar.about")}
+              </Nav.Link>
+              <Nav.Link
+                className="navlink-width"
+                href="#contactus"
+                active={activeSection === "contactus"}
+              >
+                {t("Navbar.contact")}
+              </Nav.Link>
+              <Nav.Link className="navlink-width lang">
+                <Stack direction="horizontal" gap={1}>
+                  <Button
+                    className={`text-white text-decoration-none px-0 ${!isEn && "active"}`}
+                    variant="link"
+                    onClick={() => {
+                      switchLanguage("cn");
+                    }}
+                  >
+                    CN
+                  </Button>
+                  <span>|</span>
+                  <Button
+                    className={`text-white text-decoration-none px-0 ${isEn && "active"}`}
+                    variant="link"
+                    onClick={() => {
+                      switchLanguage("en");
+                      dispatch({ type: "CHANGE_LANGUAGE", language: "en" });
+                      localStorage.setItem("lang", "en");
+                    }}
+                  >
+                    EN
+                  </Button>
+                </Stack>
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
 
-      {/* body */}
       {/* Main section */}
       <section id="main" style={{ borderBottom: "1px solid #f3f3f3" }}>
         <Container
@@ -118,16 +233,9 @@ export default (props) => {
             <Col xs={12} sm={7} className="mt-5">
               <div>
                 <h2 className="text-primary fw-bold mb-4 fs-1">
-                  Powerful Multi-Cloud
-                  <br /> Management Platform
+                  {t("Main.title")}
                 </h2>
-                <p className="">
-                  Integrate multi-cloud products through a single platform to
-                  monitor traffic, analyze usage, and manage billing for you.
-                  Enabling businesses to effortlessly oversee cloud usage and
-                  costs, enhancing the efficiency and convenience of expense
-                  management.
-                </p>
+                <p className="">{t("Main.subtitle")}</p>
                 <Button
                   className="text-white"
                   variant="primary"
@@ -140,7 +248,7 @@ export default (props) => {
                     lineHeight: "normal",
                   }}
                 >
-                  <b>Learn more</b>
+                  <b>{t("Main.buttonText")}</b>
                 </Button>
               </div>
             </Col>
@@ -158,22 +266,11 @@ export default (props) => {
         >
           <Row className="w-100 gx-3">
             <Col xs={12} sm={6} className="mt-5">
-              <h2 className="text-primary fw-bold fs-1">
-                Go Beyond Multicloud
-              </h2>
-              <h4 className="fw-bold mb-3">
-                More than just One-Stop Cloud Offerings,
-                <br />
-                We provide Comprehensive Observability.
-              </h4>
-              <p style={{ width: "85%" }}>
-                We are multicloud expert that pushes the boundaries of what’s
-                possible. We offer a comprehensive suite of cloud computing
-                services designed to empower innovation and drive business
-                growth. Our advanced observability platform ensures that you
-                have full visibility and control over your multicloud usage, no
-                matter where you are on your cloud journey.
-              </p>
+              <h2 className="text-primary fw-bold fs-1">{t("Global.title")}</h2>
+              {language == "en" && (
+                <h4 className="fw-bold mb-3">{t("Global.subtitle")}</h4>
+              )}
+              <p style={{ width: "85%" }}>{t("Global.desc")}</p>
             </Col>
             <Col xs={12} sm={6}>
               <img
@@ -189,29 +286,43 @@ export default (props) => {
                 className="text-center"
                 style={{ marginTop: "-100px", marginLeft: "50px" }}
               >
-                <h3 className="text-primary fw-bold mb-2">CLOUD SERVICE</h3>
+                <h3 className="text-primary fw-bold mb-2">
+                  {t("Global.cloudService")}
+                </h3>
                 <Stack
                   direction="horizontal"
                   gap={4}
                   className="justify-content-center w-100"
                 >
-                  <div className="circle-box">
-                    <p className="mb-0">8</p>
-                    <p className="mb-0" style={{ lineHeight: "100%" }}>
-                      Cloud partners
-                    </p>
+                  <div
+                    className={`circle-box ${language == "cn" ? "vertical-middle" : ""}`}
+                  >
+                    <div>
+                      <p className="mb-0">8</p>
+                      <p className="mb-0" style={{ lineHeight: "100%" }}>
+                        {t("Global.cloudPartners")}
+                      </p>
+                    </div>
                   </div>
-                  <div className="circle-box">
-                    <p className="mb-0">30+</p>
-                    <p className="mb-0" style={{ lineHeight: "100%" }}>
-                      Customers Worldwide
-                    </p>
+                  <div
+                    className={`circle-box ${language == "cn" ? "vertical-middle" : ""}`}
+                  >
+                    <div>
+                      <p className="mb-0">30+</p>
+                      <p className="mb-0" style={{ lineHeight: "100%" }}>
+                        {t("Global.customerWorldWide")}
+                      </p>
+                    </div>
                   </div>
-                  <div className="circle-box">
-                    <p className="mb-0">120+</p>
-                    <p className="mb-0" style={{ lineHeight: "100%" }}>
-                      Cloud Certifications
-                    </p>
+                  <div
+                    className={`circle-box ${language == "cn" ? "vertical-middle" : ""}`}
+                  >
+                    <div>
+                      <p className="mb-0">120+</p>
+                      <p className="mb-0" style={{ lineHeight: "100%" }}>
+                        {t("Global.cloudCert")}
+                      </p>
+                    </div>
                   </div>
                 </Stack>
               </div>
@@ -250,11 +361,8 @@ export default (props) => {
                   position: "relative",
                 }}
               >
-                <h3>One-Stop Multicloud Solutions</h3>
-                <p className="mb-0">
-                  Discover comprehensive solutions that transform and elevate
-                  your business operations.
-                </p>
+                <h3>{t("Solution.title")}</h3>
+                <p className="mb-0">{t("Solution.subtitle")}</p>
                 <img
                   src={CloudDesignIcon}
                   alt=""
@@ -277,12 +385,12 @@ export default (props) => {
                   className="text-center p-2 fs-3 fw-bold bg-primary-light mb-0"
                   style={{ borderBottom: "1px solid #f3f3f3" }}
                 >
-                  Infrastructure
+                  {t("Solution.infra")}
                 </Card.Title>
                 <Card.Body className="p-1">
                   <div className="w-100">
                     <p className="text-center">
-                      <b>Our Dedicated Team</b>
+                      <b>{t("Solution.team")}</b>
                     </p>
                     <Stack
                       direction="horizontal"
@@ -291,27 +399,69 @@ export default (props) => {
                     >
                       <div className="w-25 align-self-start">
                         <img src={LowerPricesImg} alt="" width={"50px"} />
-                        <p className="mt-1">
-                          <b className="text-primary">Get Lower Prices</b>
-                          <br />
-                          by Switching Services with the Same Cloud Provider
-                        </p>
+                        {isEn && (
+                          <p className="mt-1">
+                            <b className="text-primary">Get Lower Prices</b>
+                            <br />
+                            by Switching Services with the Same Cloud Provider
+                          </p>
+                        )}
+                        {!isEn && (
+                          <>
+                            <p className="mt-1">同一云服务厂家</p>
+                            <p className="my-1">切换</p>
+                            <p className="my-1">
+                              <b className="text-primary">享更低折扣!</b>
+                            </p>
+                          </>
+                        )}
                       </div>
                       <div className="w-25 align-self-start">
                         <img src={SupportIcon} alt="" width={"50px"} />
-                        <p className="mt-1">
-                          <b className="text-primary">24/7</b>
-                          <br />
-                          Support and Operation
-                        </p>
+                        {isEn && (
+                          <p className="mt-1">
+                            <b className="text-primary">24/7</b>
+                            <br />
+                            Support and Operation
+                          </p>
+                        )}
+                        {!isEn && (
+                          <>
+                            <p className="mt-1">支持</p>
+                            <p className="my-1">
+                              <b
+                                className="text-primary"
+                                style={{ fontSize: "12px" }}
+                              >
+                                24小时/7天
+                              </b>
+                            </p>
+                            <p className="my-0">运维</p>
+                          </>
+                        )}
                       </div>
                       <div className="w-25 align-self-start">
                         <img src={ArchIcon} alt="" width={"50px"} />
-                        <p className="mt-1">Cloud Solutions Architects</p>
+                        <p className="mt-1">
+                          {isEn && <span>Cloud Solutions Architects</span>}
+                          {!isEn && (
+                            <>
+                              <p className="my-1">云解决方案</p>
+                              <p className="my-1">架构师</p>
+                            </>
+                          )}
+                        </p>
                       </div>
                       <div className="w-25 align-self-start">
                         <img src={SecurityIcon} alt="" width={"50px"} />
-                        <p className="mt-1">Security Operations (SecOps)</p>
+                        <p className="mt-1">
+                          {isEn ? (
+                            <span>Security Operations</span>
+                          ) : (
+                            <p className="my-1">安全运维</p>
+                          )}
+                          (SecOps)
+                        </p>
                       </div>
                     </Stack>
                   </div>
@@ -324,7 +474,7 @@ export default (props) => {
                   className="text-center p-2 fs-3 fw-bold bg-primary-light mb-0"
                   style={{ borderBottom: "1px solid #f3f3f3" }}
                 >
-                  Trusted Partners
+                  {t("Solution.trusted")}
                 </Card.Title>
                 <Card.Body
                   style={{
@@ -375,36 +525,48 @@ export default (props) => {
                   className="text-center p-2 fs-3 fw-bold bg-primary-light mb-0"
                   style={{ borderBottom: "1px solid #f3f3f3" }}
                 >
-                  Professional Services
+                  {t("Solution.proff")}
                 </Card.Title>
                 <Card.Body className="professional">
                   <div className="w-100">
                     <Row className="mb-3">
                       <Col sm={4} className="text-center">
                         <img src={InfraIcon} alt="" width={"50%"} />
-                        <p className="mt-1 mb-0">Cloud Infrastructure</p>
+                        <p className="mt-1 mb-0">
+                          {t("Solution.prof.cloudInfra")}
+                        </p>
                       </Col>
                       <Col sm={4} className="text-center">
                         <img src={CloudSecurIcon} alt="" width={"50%"} />
-                        <p className="mt-1 mb-0">Cloud Security</p>
+                        <p className="mt-1 mb-0">
+                          {t("Solution.prof.cloudSecu")}
+                        </p>
                       </Col>
                       <Col sm={4} className="text-center">
                         <img src={GlobalSmsIcon} alt="" width={"50%"} />
-                        <p className="mt-1 mb-0">Global SMS</p>
+                        <p className="mt-1 mb-0">
+                          {t("Solution.prof.globalSms")}
+                        </p>
                       </Col>
                     </Row>
                     <Row>
                       <Col sm={4} className="text-center">
                         <img src={TrustSecuIcon} alt="" width={"50%"} />
-                        <p className="mt-1 mb-0">Zero Trust Security</p>
+                        <p className="mt-1 mb-0">
+                          {t("Solution.prof.zeroSecu")}
+                        </p>
                       </Col>
                       <Col sm={4} className="text-center">
                         <img src={ServicesIcon} alt="" width={"50%"} />
-                        <p className="mt-1 mb-0">Managed Services</p>
+                        <p className="mt-1 mb-0">
+                          {t("Solution.prof.managedServices")}
+                        </p>
                       </Col>
                       <Col sm={4} className="text-center">
                         <img src={AiLearningIcon} alt="" width={"50%"} />
-                        <p className="mt-1 mb-0">AI & Machine Learning</p>
+                        <p className="mt-1 mb-0">
+                          {t("Solution.prof.aiMachine")}
+                        </p>
                       </Col>
                     </Row>
                   </div>
@@ -422,7 +584,7 @@ export default (props) => {
                   borderRadius: "30px",
                 }}
               >
-                <h3 className="mb-0">Tailored Solutions for Your Industry</h3>
+                <h3 className="mb-0">{t("Solution.tailored")}</h3>
               </div>
             </Col>
           </Row>
@@ -436,55 +598,55 @@ export default (props) => {
                 <div className="text-center" style={{ width: "100px" }}>
                   <img src={EducationIcon} alt="" width={"50px"} />
                   <p className="mt-2 mb-0 fw-bold" style={{ fontSize: "11px" }}>
-                    Education
+                    {t("Solution.education")}
                   </p>
                 </div>
                 <div className="text-center" style={{ width: "100px" }}>
                   <img src={BankingIcon} alt="" width={"50px"} />
                   <p className="mt-2 mb-0 fw-bold" style={{ fontSize: "11px" }}>
-                    Banking
+                    {t("Solution.banking")}
                   </p>
                 </div>
                 <div className="text-center" style={{ width: "100px" }}>
                   <img src={GamingIcon} alt="" width={"50px"} />
                   <p className="mt-2 mb-0 fw-bold" style={{ fontSize: "11px" }}>
-                    Gaming
+                    {t("Solution.gaming")}
                   </p>
                 </div>
                 <div className="text-center" style={{ width: "100px" }}>
                   <img src={BlockChainIcon} alt="" width={"50px"} />
                   <p className="mt-2 mb-0 fw-bold" style={{ fontSize: "11px" }}>
-                    Block Chain
+                    {t("Solution.blockChain")}
                   </p>
                 </div>
                 <div className="text-center" style={{ width: "100px" }}>
                   <img src={BigDataIcon} alt="" width={"50px"} />
                   <p className="mt-2 mb-0 fw-bold" style={{ fontSize: "11px" }}>
-                    AI & Big Data
+                    {t("Solution.aibigdata")}
                   </p>
                 </div>
                 <div className="text-center" style={{ width: "100px" }}>
                   <img src={NewsIcon} alt="" width={"50px"} />
                   <p className="mt-2 mb-0 fw-bold" style={{ fontSize: "11px" }}>
-                    News Media
+                    {t("Solution.news")}
                   </p>
                 </div>
                 <div className="text-center" style={{ width: "100px" }}>
                   <img src={HealthCareIcon} alt="" width={"50px"} />
                   <p className="mt-2 mb-0 fw-bold" style={{ fontSize: "11px" }}>
-                    Healthcare
+                    {t("Solution.healthcare")}
                   </p>
                 </div>
                 <div className="text-center" style={{ width: "100px" }}>
                   <img src={RetailIcon} alt="" width={"50px"} />
                   <p className="mt-2 mb-0 fw-bold" style={{ fontSize: "11px" }}>
-                    Retail
+                    {t("Solution.retail")}
                   </p>
                 </div>
                 <div className="text-center" style={{ width: "100px" }}>
                   <img src={TransportationIcon} alt="" width={"50px"} />
                   <p className="mt-2 mb-0 fw-bold" style={{ fontSize: "11px" }}>
-                    Transportation
+                    {t("Solution.transportation")}
                   </p>
                 </div>
               </Stack>
@@ -496,41 +658,30 @@ export default (props) => {
       {/* About section */}
       <section id="aboutus">
         <Container
-          style={{ display: "flex", alignItems: "center", minHeight: "65vh" }}
+          style={{ display: "flex", alignItems: "center", minHeight: "70vh" }}
         >
           <Row>
             <Col sm={12}>
               <h2 className="text-primary fw-bold mb-4 fs-1">
-                UDP CLOUD — Your Cloud Innovation Engine
+                UDP CLOUD — {t("About.title")}
               </h2>
             </Col>
             <Col sm={7}>
               <p>
-                <b className="text-primary">UDP CLOUD</b> brings together
-                technology experts from Malaysia and China. With solid
-                professional expertise and diverse industry experience, we
-                specialize in providing enterprises with cloud-native
-                development, big data analytics, and cloud architecture
-                optimization services.
+                <b className="text-primary">UDP CLOUD</b> {t("About.phrase1")}
               </p>
+              <p>{t("About.phrase2")}</p>
               <p>
-                Our team not only understands various corporate IT needs but
-                also excels in rapidly implementing technology to drive business
-                growth. We have helped numerous clients achieve digital
-                transformation, enhance operational efficiency, and earn
-                widespread trust and recognition.
+                {isEn ? "By choosing" : "选择"}{" "}
+                <b className="text-primary">UDP CLOUD</b>,{" "}
+                {isEn ? "you’llgain" : "您将获得"}:
               </p>
-              <p>
-                By choosing <b className="text-primary">UDP CLOUD</b>, you’ll
-                gain:
-              </p>
-              <p>• Expert technical support & consulting</p>
-              <p>• Tailored cloud solutions</p>
-              <p>• Continuous optimization & reliable operation assurance</p>
+              <p>• {t("About.list1")}</p>
+              <p>• {t("About.list2")}</p>
+              <p>• {t("About.list3")}</p>
 
               <h4 className="text-primary" style={{ fontWeight: "700" }}>
-                We look forward to becoming your trusted long-term partner,
-                working together to embrace the digital future.
+                {t("About.footer")}
               </h4>
             </Col>
             <Col sm={5} className="align-self-end">
@@ -541,7 +692,6 @@ export default (props) => {
       </section>
 
       {/* Contact section */}
-      {/* height should be depends on screensize */}
       <section id="contactus">
         <Container
           style={{ display: "flex", alignItems: "center", minHeight: "65vh" }}
@@ -549,12 +699,11 @@ export default (props) => {
           <Row className="w-100 gx-5">
             <Col xs={12} sm={7} className="mt-5">
               <div style={{ width: "85%" }}>
-                <h2 className="text-primary fw-bold mb-4 fs-1">Contact Us</h2>
-                <p className="">
-                  Fill out the form below to consult with us and begin your
-                  exclusive cloud journey! If you have any questions, feel free
-                  to check our FAQ or contact us directly—our specialists will
-                  be happy to assist you.
+                <h2 className="text-primary fw-bold mb-4 fs-1">
+                  {t("Contact.title")}
+                </h2>
+                <p className={!isEn ? "fw-bold" : ""}>
+                  {t("Contact.subtitle")}
                 </p>
               </div>
             </Col>
@@ -585,12 +734,13 @@ export default (props) => {
                     alt="Product Information"
                   />
                   <div>
-                    <h4 className="fw-bold mb-1">Product Information</h4>
-                    <p className="mb-1">
-                      Click now to explore the products and services offered by
-                      UDP Cloud
+                    <h4 className="fw-bold mb-1">
+                      {t("Inquiry.product.title")}
+                    </h4>
+                    <p className="mb-1">{t("Inquiry.product.desc")}</p>
+                    <p className="text-primary mb-0">
+                      {t("Inquiry.product.linkText")}
                     </p>
-                    <p className="text-primary mb-0">Learn More</p>
                   </div>
                 </Stack>
                 <Stack direction="horizontal" gap={5}>
@@ -600,12 +750,13 @@ export default (props) => {
                     alt="career opportunities"
                   />
                   <div>
-                    <h4 className="fw-bold mb-1">Career Opportunities</h4>
-                    <p className="mb-1">
-                      Join the UDP CLOUD family! Click to discover available
-                      positions.
+                    <h4 className="fw-bold mb-1">
+                      {t("Inquiry.career.title")}
+                    </h4>
+                    <p className="mb-1">{t("Inquiry.career.desc")}</p>
+                    <p className="text-primary mb-0">
+                      {t("Inquiry.career.linkText")}
                     </p>
-                    <p className="text-primary mb-0">Join Us</p>
                   </div>
                 </Stack>
                 <Stack direction="horizontal" gap={5}>
@@ -615,10 +766,10 @@ export default (props) => {
                     alt="Business Inquiries"
                   />
                   <div>
-                    <h4 className="fw-bold mb-1">Business Inquiries</h4>
-                    <p className="mb-1">
-                      Contact our sales team to learn more about UDP CLOUD.
-                    </p>
+                    <h4 className="fw-bold mb-1">
+                      {t("Inquiry.business.title")}
+                    </h4>
+                    <p className="mb-1">{t("Inquiry.business.desc")}</p>
                     <a
                       href="mailto:sales@udpcloud.com.my"
                       className="text-primary text-decoration-none"
@@ -646,7 +797,7 @@ export default (props) => {
                   style={{ borderRadius: "30px", padding: "35px 45px" }}
                 >
                   <Card.Title className="mb-3 fw-bold">
-                    Got questions? We'd love to hear from you!{" "}
+                    {t("Inquiry.form.title")}{" "}
                   </Card.Title>
                   <Form onSubmit={handleSubmit(onSubmit)}>
                     <Form.Group
@@ -655,9 +806,9 @@ export default (props) => {
                     >
                       <Form.Control
                         type="text"
-                        placeholder="First name"
+                        placeholder={t("Inquiry.form.firstName")}
                         {...register("firstName", {
-                          required: "First name is required",
+                          required: t("Common.Required.message"),
                         })}
                         isInvalid={!!errors.firstName}
                       />
@@ -672,9 +823,9 @@ export default (props) => {
                     >
                       <Form.Control
                         type="text"
-                        placeholder="Last name"
+                        placeholder={t("Inquiry.form.lastName")}
                         {...register("lastName", {
-                          required: "Last name is required",
+                          required: t("Common.Required.message"),
                         })}
                         isInvalid={!!errors.lastName}
                       />
@@ -689,9 +840,9 @@ export default (props) => {
                     >
                       <Form.Control
                         type="email"
-                        placeholder="Email"
+                        placeholder={t("Inquiry.form.email")}
                         {...register("email", {
-                          required: "Email is required",
+                          required: t("Common.Required.message"),
                         })}
                         isInvalid={!!errors.email}
                       />
@@ -706,8 +857,10 @@ export default (props) => {
                     >
                       <Form.Control
                         type="text"
-                        placeholder="Phone Number / Telegram"
-                        {...register("phone", { required: "This is required" })}
+                        placeholder={t("Inquiry.form.phone")}
+                        {...register("phone", {
+                          required: t("Common.Required.message"),
+                        })}
                         isInvalid={!!errors.phone}
                       />
                       <Form.Control.Feedback type="invalid">
@@ -721,9 +874,9 @@ export default (props) => {
                     >
                       <Form.Control
                         type="text"
-                        placeholder="Inquiry Type"
+                        placeholder={t("Inquiry.form.type")}
                         {...register("inquiry", {
-                          required: "This is required",
+                          required: t("Common.Required.message"),
                         })}
                         isInvalid={!!errors.inquiry}
                       />
@@ -739,8 +892,7 @@ export default (props) => {
                       <Form.Control
                         as="textarea"
                         rows={5}
-                        placeholder="Please describe your question in detail.
-We will respond to you as soon as possible."
+                        placeholder={t("Inquiry.form.desc")}
                       />
                     </Form.Group>
 
@@ -755,7 +907,7 @@ We will respond to you as soon as possible."
                         fontSize: "16px",
                       }}
                     >
-                      Submit
+                      {t("Inquiry.form.buttonText")}
                     </Button>
                   </Form>
                 </Card.Body>
@@ -772,17 +924,33 @@ We will respond to you as soon as possible."
             <Col xs={6} className="mt-2">
               <img src={FooterLogoImg} width={"30%"} />
               <div className="mt-3">
-                Visit us online at <b>www.udpcloud.com.my</b>
+                {t("Footer.knowMore")} <b>www.udpcloud.com.my</b>
               </div>
             </Col>
             <Col xs={3}>
-              <h4 className="text-primary mb-4 fw-bold">Quick Links</h4>
-              <p>Cloud Products & Services</p>
-              <p>About Us</p>
-              <p>Contact Us</p>
+              <h4 className="text-primary mb-4 fw-bold">
+                {t("Footer.quicklinks")}
+              </h4>
+              <p>
+                <a href="#global" className="text-dark text-decoration-none">
+                  {t("Navbar.cloud")}
+                </a>
+              </p>
+              <p>
+                <a href="#aboutus" className="text-dark text-decoration-none">
+                  {t("Navbar.about")}
+                </a>
+              </p>
+              <p>
+                <a href="#contactus" className="text-dark text-decoration-none">
+                  {t("Navbar.contact")}
+                </a>
+              </p>
             </Col>
             <Col xs={3}>
-              <h4 className="text-primary mb-4 fw-bold">Get in Touch</h4>
+              <h4 className="text-primary mb-4 fw-bold">
+                {t("Footer.getInTouch")}
+              </h4>
               <Stack direction="horizontal" gap={2}>
                 <div style={{ width: "15px" }}>
                   <FontAwesomeIcon icon={faWhatsapp} className="text-primary" />

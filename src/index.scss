@@ -12,6 +12,9 @@ $primary: #2abed1;
   align-self: center;
   color: white;
   line-height: normal;
+  &:last-child {
+    width: auto;
+  }
 }
 
 #inquiry,
@@ -30,12 +33,19 @@ img {
   -webkit-user-drag: none;
 }
 
+.vertical-middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .circle-box {
   width: 95px;
   height: 93px;
   background-color: $primary;
   padding: 10px;
   border-radius: 50%;
+
   p {
     color: white;
     font-size: 13px;
@@ -73,4 +83,33 @@ img {
 
 .trusted-partners {
   margin-bottom: 20px;
+}
+
+.lang .active {
+  color: red !important;
+  font-weight: bold;
+}
+
+.nav-link {
+  position: relative;
+  font-weight: 500;
+  &.active {
+    color: white !important;
+  }
+}
+
+.nav-link::after {
+  content: ""; /* Required for the pseudo-element */
+  position: absolute; /* Position it absolutely */
+  left: 0; /* Align to the left */
+  right: 0; /* Align to the right */
+  bottom: -14px; /* Position at the bottom */
+  height: 5px; /* Height of the border */
+  background-color: $primary; /* Color of the border */
+  transform: scaleX(0); /* Initially scale to 0 */
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.nav-link.active::after {
+  transform: scaleX(1); /* Scale to full width when active */
 }
