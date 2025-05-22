@@ -724,7 +724,7 @@ export default (props) => {
           <Row className="gx-5">
             <Col xs={12} sm={5} className="mt-4">
               <h3 className="text-primary mb-4 fw-bold">
-                Welcome to reach out through the following channels
+                {t("Inquiry.title")}
               </h3>
               <Stack direction="vertical" gap={3}>
                 <Stack direction="horizontal" gap={5}>
