@@ -110,6 +110,10 @@ img {
   transition: transform 0.3s ease; /* Smooth transition */
 }
 
+.nav-link.en::after {
+  bottom: -16px;
+}
+
 .nav-link.active::after {
   transform: scaleX(0.6); /* Scale to full width when active */
 }

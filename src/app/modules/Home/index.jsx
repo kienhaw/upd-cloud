@@ -126,9 +126,6 @@ export default (props) => {
     // Update the active section only if it has changed
     if (currentSectionId !== activeSection) {
       setActiveSection(currentSectionId);
-    } else {
-      //should only set null if its over this section
-      // setActiveSection(currentSectionId);
     }
   };
 
@@ -174,7 +171,7 @@ export default (props) => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link
-                className="navlink-width"
+                className={`navlink-width ${isEn && "en"}`}
                 href="#global"
                 active={activeSection === "global"}
               >
@@ -932,7 +929,7 @@ export default (props) => {
                 {t("Footer.quicklinks")}
               </h4>
               <p>
-                <a href="#global" className="text-dark text-decoration-none">
+                <a href="#global" className={`text-dark text-decoration-none`}>
                   {t("Navbar.cloud")}
                 </a>
               </p>
