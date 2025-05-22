@@ -103,13 +103,13 @@ img {
   position: absolute; /* Position it absolutely */
   left: 0; /* Align to the left */
   right: 0; /* Align to the right */
-  bottom: -14px; /* Position at the bottom */
-  height: 5px; /* Height of the border */
+  bottom: -25px; /* Position at the bottom */
+  height: 6px; /* Height of the border */
   background-color: $primary; /* Color of the border */
   transform: scaleX(0); /* Initially scale to 0 */
   transition: transform 0.3s ease; /* Smooth transition */
 }
 
 .nav-link.active::after {
-  transform: scaleX(1); /* Scale to full width when active */
+  transform: scaleX(0.6); /* Scale to full width when active */
 }
