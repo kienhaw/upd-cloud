@@ -4,10 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode development",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "stag": "vite build --mode staging",
+    "prod": "vite build --mode production"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
