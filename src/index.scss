@@ -59,6 +59,17 @@ img {
   align-items: baseline;
 }
 
+.global-image {
+  width: 125%;
+  margin-left: -23%;
+  margin-top: -40px;
+}
+
+.cloud-service {
+  margin-top: -100px;
+  margin-left: 50px;
+}
+
 @media (max-width: 474px) {
   .tailored-icons {
     flex-wrap: wrap;
@@ -66,6 +77,15 @@ img {
   #aboutus {
     padding-top: 30px;
     padding-bottom: 30px;
+  }
+  .cloud-service {
+    margin-top: -50px;
+    margin-left: 10px;
+  }
+  .global-image {
+    width: 125%;
+    margin-left: -20%;
+    margin-top: -40px;
   }
 }
 

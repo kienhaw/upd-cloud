@@ -274,19 +274,8 @@ export default (props) => {
               <p style={{ width: "85%" }}>{t("Global.desc")}</p>
             </Col>
             <Col xs={12} sm={6} className="mt-5 mt-sm-0">
-              <img
-                src={GlobalImg}
-                alt=""
-                style={{
-                  width: "125%",
-                  marginLeft: "-23%",
-                  marginTop: "-40px",
-                }}
-              />
-              <div
-                className="text-center"
-                style={{ marginTop: "-100px", marginLeft: "50px" }}
-              >
+              <img src={GlobalImg} alt="" className="global-image" />
+              <div className="text-center cloud-service">
                 <h3 className="text-primary fw-bold mb-2">
                   {t("Global.cloudService")}
                 </h3>
@@ -379,7 +368,7 @@ export default (props) => {
               </div>
             </Col>
           </Row>
-          <Row className="gx-2 mb-5">
+          <Row className="gx-2 mb-3 mb-md-5">
             <Col sm={4}>
               <Card className="solution-card">
                 <Card.Title className="text-center p-2 fs-3 fw-bold bg-primary-light mb-0">
